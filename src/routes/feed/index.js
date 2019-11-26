@@ -9,6 +9,17 @@ class Feed extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return <div id='feed'></div>;
   }
