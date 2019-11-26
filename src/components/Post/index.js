@@ -1,16 +1,20 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import * as styles from './styles.scss';
+
 function Post(props) {
-  const {} = props;
+  const { username, title, body } = props;
 
   useEffect(() => {
     console.log(props);
   });
 
   return (
-    <div className='post'>
-      <pre>{}</pre>
+    <div className='post flex column space-around' style={styles}>
+      <div className='username'>{username}</div>
+      <div className='title'>{title}</div>
+      <div className='body'>{body}</div>
     </div>
   );
 }

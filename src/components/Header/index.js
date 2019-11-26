@@ -11,11 +11,11 @@ function Header(props) {
   }
 
   return (
-    <header className='flex space-between' style={styles}>
+    <header className='flex space-between align-center' style={styles}>
       <h1 id='title'>
         <Link to='/feed'>{title}</Link>
       </h1>
-      <button id='post-button' onClick={() => routeTo('post')}>
+      <button id='post-button' type='button' onClick={() => routeTo('post')}>
         Post
       </button>
     </header>

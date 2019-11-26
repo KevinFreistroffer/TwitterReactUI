@@ -38,6 +38,8 @@ class Feed extends Component {
           'An error occured fetching your posts. Please try again.'
       });
     }
+
+    window.onscroll = this.handleOnScroll;
   }
 
   renderPosts = () => {
@@ -45,7 +47,7 @@ class Feed extends Component {
       return (
         <Post
           key={index.toString()}
-          username={post.username}
+          username={post.userId}
           title={post.title}
           body={post.body}
         />
@@ -53,31 +55,32 @@ class Feed extends Component {
     });
   };
 
+  handleOnScroll = e => {
+    console.log(this.postRef);
+  };
+
   render() {
-    const { isFetchingPosts } = this.state;
+    const { isFetchingPosts, fetchingPostsError } = this.state;
     const Loading = () => {
       return <div className='flex center-all'>One moment ...</div>;
+    };
+
+    const FetchingPostsError = () => {
+      return <div className='error'>{fetchingPostsError}</div>;
     };
 
     const Content = () => {
       if (isFetchingPosts) {
         return <Loading />;
+      } else if (fetchingPostsError !== '') {
+        return <FetchingPostsError />;
       } else {
-        return (
-          <div id='posts'>
-            <Post
-              key={'string'}
-              username={'Bobajee'}
-              title={'Voices'}
-              body={'Voices body'}
-            />
-          </div>
-        );
+        return <div id='posts'>{this.renderPosts()}</div>;
       }
     };
 
     return (
-      <div id='feed'>
+      <div id='feed' className='flex center-all' onScroll={this.handleOnScroll}>
         <Content />
       </div>
     );

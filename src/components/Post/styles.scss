@@ -1,0 +1,10 @@
+.post {
+  padding: 2rem;
+  margin: 1rem;
+  background-color: '#fff';
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eee;
+  }
+}

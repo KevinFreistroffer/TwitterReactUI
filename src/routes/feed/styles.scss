@@ -1,0 +1,17 @@
+#feed {
+  min-height: calc(100vh - 5rem);
+  background-color: rgb(245, 248, 250);
+
+  .error {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 3rem;
+    color: red;
+  }
+
+  #posts {
+    width: 100%;
+    display: block !important;
+  }
+}
