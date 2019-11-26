@@ -1,12 +1,30 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as styles from './styles.scss';
 
 function Header(props) {
-  const { title } = props;
+  const { title, route } = props;
 
-  return <header style={styles}></header>;
+  function routeTo(route) {
+    props.history.push(`/${route}`);
+  }
+
+  return (
+    <header className='flex space-between' style={styles}>
+      <h1 id='title'>
+        <Link to='/feed'>{title}</Link>
+      </h1>
+      <button id='post-button' onClick={() => routeTo('post')}>
+        Post
+      </button>
+    </header>
+  );
 }
 
-Header.propTypes = {};
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  route: PropTypes.string
+};
 
-export default memo(Header);
+export default withRouter(memo(Header));
